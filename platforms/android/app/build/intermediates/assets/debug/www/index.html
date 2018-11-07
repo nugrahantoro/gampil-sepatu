@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1, 
+         maximum-scale = 1, minimum-scale = 1, user-scalable = no, minimal-ui" />
+      <meta name = "apple-mobile-web-app-capable" content = "yes" />
+      <meta name = "apple-mobile-web-app-status-bar-style" content = "black" />
+      <title>GAMPIL SEPATU</title>
+      <!-- <link rel = "stylesheet" 
+         href = "https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/css/framework7.ios.min.css" />
+      <link rel = "stylesheet" 
+         href = "https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/css/framework7.ios.colors.min.css" /> -->
+      <link rel ="stylesheet" href="css/framework7-1.4.2.css"/>
+      <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+      <link rel="stylesheet" href="css/my-app.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+   </head>
+   <body>
+        <div class = "views">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left"><img src="img/gampil.png" height="30px" width="30px"></img></div>
+	                  <div class="center sliding"><center style="color: #fff;">SEPATU</center></div>
+	                </div>
+	            </div>
+	            <div class = "pages navbar-through">
+	               <div data-page = "home" class = "page">
+	                  <div class = "page-content" style="background: #c3cdd0;">
+	                     <div class = "list-block" style="margin-top: 22px;">
+	                        <ul>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=kinerja();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Kinerja Pelayanan Izin</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=presensi();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Presensi Pegawai</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=realisai();>                                 
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Realisasi Penyerahan Anggaran</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" onclick=logout(); class = "item-link">
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Log Out</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=keluar();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Keluar</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                        </ul>
+	                     </div>
+	                  </div>
+	                  
+	               </div>
+	            </div>  
+	            <div class="fotter">
+			      GAMPIL SEPATU V 1.0.0 
+			    </div>    
+	        </div>
+	    </div>
+      
+        <!-- start login -->
+	    <div class="login-screen modal-in" id="m-login">
+	        <div class = "view">
+	            <div class = "page">
+	               <div class = "page-content login-screen-content" style="background: #24c0f2;">
+	                  <center><img src="img/gampil.png" height="70px" width="70px" style="margin-top: 80px;"></img></center>  
+	                  <p><center style="color: #fff;">GAMPIL SEPATU</center></p>           
+	                  <p><center style="color: #fff;">Sistem Elektronik Pengawasan Terpadu</center></p>           
+	                  <form style="margin-top: 40px; margin-left: 40px; margin-right: 40px;">
+	                     <div class = "list-block">
+	                     	<div class = "title" style="color: #fff;">&nbsp &nbspUsername</div>
+	                        <ul>
+	                           <li class = "item-content">
+	                              <div class = "item-inner">
+	                                 <div class = "item-input">
+	                                    <input type = "text" id="username" name = "username" placeholder = "masukkan username" >
+	                                 </div>
+	                              </div>
+	                           </li>                          
+	                        </ul>
+	                        <br>
+	                        <div class = "title" style="color: #fff;">&nbsp &nbspPassword</div>
+	                        <ul>
+	                        	<li class = "item-content">
+	                              <div class = "item-inner">
+	                                 <div class = "item-input">
+	                                    <input type = "password" id="password" name = "password" placeholder = "masukkan password">
+	                                 </div>
+	                              </div>
+	                           </li>
+	                        </ul>
+	                     </div>                    
+	                     <div class = "list-block">
+	                     	<ul>
+	                           <li><a href = "#" class = "item-link list-button" onclick=login(); style="background: #00CC00; border-color: #00CC00; color: #fff;">Login</a></li>
+	                        </ul>
+	                     </div>
+	                  </form>               
+	               </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- end login -->
+
+	    <!-- start kinerja -->
+	    <div class="popup popup-kinerja" id="m-kinerja">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" data-popup=".popup-kinerja" class="link icon-only close-popup">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Kinerja Pelayanan</center></div>
+	                </div>
+	            </div>
+	            <div class = "pages navbar-through">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #c3cdd0;">
+	                     <div class = "list-block" style="margin-top: 22px;">
+	                        <ul>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=pemrosesan_izin();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Pemrosesan Izin</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=waktu_proses();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Waktu Proses</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=ikm();>                                 
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">IKM</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=pengaduan();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Pengaduan</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                        </ul>
+	                     </div>
+	                  </div>
+	                  
+	               </div>
+	            </div>  
+	        </div>
+	    </div>
+	    <!-- end kinerja -->
+
+	    <!-- start pemrosean izin -->
+	    <div class="popup popup-pemrosesan-izin" id="m-pemrosesan-izin">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_proses_izin(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Pemrosesan Izin</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+	            	<form class="list-block" style="margin-top: 22px;">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Awal</div>
+		                      <div class="item-input">
+		                        <input type="date" id="p_tgl_awal" name="p_tgl_awal" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Akhir</div>
+		                      <div class="item-input">
+		                        <input type="date" id="p_tgl_akhir" name="p_tgl_akhir" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>     
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Bidang</div>
+		                      <div class="item-input">
+		                        <select name = "p_bidang" id="p_bidang" onchange="get_p_jns_izin();">
+		                            <option value="0" selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>             
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Jenis Izin</div>
+		                      <div class="item-input">
+		                        <!-- <input type="text" id="p_jenis_izin" name="p_jenis_izin" disabled> -->
+		                        <select id="p_jenis_izin" name="p_jenis_izin">
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_izin(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 61%;">
+	                    <div class = "list-block" id="hasil_pemrosesan_izin">
+	                        <ul style="margin-top: -35px; font-size: 15px;">
+	                           <li>
+	                              <div class = "item-content" style="background-color: #00ffff;">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table border="0">
+	                                       			<tr>
+	                                       				<td width="350px">Izin Dalam Proses</td>
+	                                       				<td id="izin_dalam_proses" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr width="350px">
+	                                       				<td width="350px">Verifikasi Pendaftaran</td>
+	                                       				<td id="verivfikasi_pendaftaran" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Validasi Bidang</td>
+	                                       				<td id="validasi_bidang" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Validasi Teknis</td>
+	                                       				<td id="validasi_teknis" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350">Persetujuan Bidang</td>
+	                                       				<td id="persetujuan_bidang" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Pembayaran</td>
+	                                       				<td id="pembayaran" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Survey IKM</td>
+	                                       				<td id="survey_ikm" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Draft Izin</td>
+	                                       				<td id="draf_izin" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Tanda Tangan</td>
+	                                       				<td id="tanda_tangan" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Cetak Izin</td>
+	                                       				<td id="cetak_izin" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content" style="background-color: #66ff33; color: #fff;">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px" style="color: #fff;">Izin Selesai</td>
+	                                       				<td id="izin_selesai" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Penyerahan Izin</td>
+	                                       				<td id="penyerahan_izin" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">POS</td>
+	                                       				<td id="pos" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+		                                       			<td width="350px">Sampai Pemohon</td>
+		                                       			<td id="samapai_pemohon" style="color: red;"></td>
+		                                       		</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content" style="background: #ff0000; color: #fff;">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px" style="color: #fff;">Izin Ditolak</td>
+	                                       				<td id="izin_ditolak" style="color: #fff;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Ditolak di Validasi Bidang</td>
+	                                       				<td id="ditolak_v_bidang" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Ditolak di Persetujan Bidang</td>
+	                                       				<td id="ditolak_p_bidang" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">By System Waktu Bayar</td>
+	                                       				<td id="by_wkt_bayar" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">By System Waktu Survey</td>
+	                                       				<td id="by_wkt_survey" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content" style="background: #006699; color: #fff;">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px" style="color: #fff;">Total Pengajuan</td>
+	                                       				<td id="total_pengajuan" style="color: #fff;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                        </ul>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div>  
+	        </div>
+	    </div>
+	    <!-- end kinerja -->
+
+	    <!-- start waktu proses -->
+	    <div class="popup popup-waktu-proses" id="m-waktu-proses">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_waktu_proses();  class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Waktu Proses</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+	            	<form class="list-block" style="margin-top: 22px;">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Awal</div>
+		                      <div class="item-input">
+		                        <input type="date" id="w_tgl_awal" name="w_tgl_awal" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Akhir</div>
+		                      <div class="item-input">
+		                        <input type="date" id="w_tgl_akhir" name="w_tgl_akhir" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>     
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Bidang</div>
+		                      <div class="item-input">
+		                        <select name = "w_bidang" id="w_bidang" onchange="get_w_jns_izin();">
+		                            <option value="0" selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>             
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Jenis Izin</div>
+		                      <div class="item-input">
+		                        <select id="w_jenis_izin" name="w_jenis_izin">
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_waktu(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 60%;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px;">
+	                    <div class = "list-block" id="hasil_waktu_proses">
+	                    	<div class="data-table card">
+							  <table id="t_waktu_proses" class="display" style="width:100%">
+							    <thead>
+							    	<tr style="background: #c3cdd0; height: 40px;">
+								        <th width="250px">Jenis Izin</th>
+								        <th width="160px">Waktu Proses</th>
+								    </tr>
+							    </thead>
+							    <tbody id="buat_waktu_proses">
+
+							    </tbody>
+							  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end waktu proses -->
+
+	    <!-- start waktu ikm -->
+	    <div class="popup popup-ikm" id="m-ikm">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_ikm(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">IKM</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+		            <form class="list-block" style="margin-top: 22px;">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Awal</div>
+		                      <div class="item-input">
+		                        <input type="date" id="i_tgl_awal" name="i_tgl_awal">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Akhir</div>
+		                      <div class="item-input">
+		                        <input type="date" id="i_tgl_akhir" name="i_tgl_akhir">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>     
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Bidang</div>
+		                      <div class="item-input">
+		                        <select name = "i_bidang" id="i_bidang" onchange="get_i_jns_izin();">
+		                            <option selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>             
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Jenis Izin</div>
+		                      <div class="item-input">
+		                        <select id="i_jenis_izin" name="i_jenis_izin"></select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_ikm(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 60%;">
+	                    <div class = "list-block" id="hasil_ikm">
+	                        <ul style="margin-top: -35px; font-size: 15px;">
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Jumlah Peseta</td>
+	                                       				<td id="jumlah_peserta" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px">Nilai IKM</td>
+	                                       				<td id="nilai_ikm" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="350px;">Nilai Indeks</td>
+	                                       				<td id="nilai_indeks" style="color: red;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                            <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table>
+	                                       			<tr>
+	                                       				<td width="250px;">Mutu Pelayanan</td>
+	                                       				<td id="mutu_pelayanan" style="color: #fff; background: green; padding-left: 5px; padding-right: 5px;"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                               </div>
+	                           </li>
+	                        </ul>
+	                        <div class="data-table card">
+								  <table id="t_ikm" class="display" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+									        <th width="230px">Indikator</th>
+									        <th width="100px">Nilai</th>
+									        <th width="180px">Kategori</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_ikm">
+
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end waktu ikm -->
+
+	    <!-- start waktu pengaduan -->
+	    <div class="popup popup-pengaduan" id="m-pengaduan">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_pengaduan(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Pengaduan</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+		            <form class="list-block" style="margin-top: 22px;">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Awal</div>
+		                      <div class="item-input">
+		                        <input type="date" id="pe_tgl_awal" name="pe_tgl_awal" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tgl Akhir</div>
+		                      <div class="item-input">
+		                        <input type="date" id="pe_tgl_akhir" name="pe_tgl_akhir" placeholder="dd/mm/yyy">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>     
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Bidang</div>
+		                      <div class="item-input">
+		                        <select name = "pe_bidang" id="pe_bidang" onchange="get_pe_jns_izin();">
+		                            <option selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>             
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Jenis Izin</div>
+		                      <div class="item-input">
+		                        <select id="pe_jenis_izin" name="pe_jenis_izin"></select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_pengaduan(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">
+	                    <div class = "list-block" id="hasil_pengaduan">
+	                        <ul style="margin-top: -35px; font-size: 15px;">
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       	<table>
+	                                       		<tr>
+	                                       			<td width="350px">Rata-rata waktu respon</td>
+	                                       			<td id="rata_wkt_redpon"></td>
+	                                       		</tr>
+	                                       	</table>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                        </ul>
+	                        <div class="data-table card">
+								  <table id="t_pengaduan" class="display" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+									        <th width="250px">Jenis Pengaduan</th>
+									        <th width="160px">Jumlah</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_pengaduan">
+
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end waktu pengaduan -->
+
+	    <!-- start presensi -->
+	    <div class="popup popup-presensi" id="m-presensi">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" data-popup=".popup-presensi" class="link icon-only close-popup">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Presensi Pegawai</center></div>
+	                </div>
+	            </div>
+	            <div class = "pages navbar-through">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #c3cdd0;">
+	                     <div class = "list-block" style="margin-top: 22px;">
+	                        <ul>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=tidak_hadir_sekarang();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Tidak Hadir Hari ini</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=tidak_hadir_kemarin();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Tidak Hadir Kemarin</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=tidak_hadir_tertentu();>                                 
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Tidak Hadir Waktu Tertentu</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                           <li>
+	                              <a href = "#" class = "item-link" onclick=peringkat_kehadiran();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Peringkat Kehadiran</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                            <li>
+	                              <a href = "#" class = "item-link" onclick=jumlah_absensi_bulan();>
+	                                 <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">Jumlah Absensi Tiap Bulan</div>
+	                                    </div>
+	                                 </div>
+	                              </a>
+	                           </li>
+	                        </ul>
+	                     </div>
+	                  </div>
+	                  
+	               </div>
+	            </div>  
+	        </div>
+	    </div>
+	    <!-- end presensi -->
+
+	    <!-- start tidak-hadir-sekarang -->
+	    <div class="popup popup-tidak-hadir-sekarang" id="m-tidak-hadir-sekarang">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_tidak_hadir_sekarang();  class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Tidak Hadir Hari Ini</center></div>
+	                </div>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">
+	                    <div class = "list-block" style="margin-top: 68px;">
+	                        <ul style="font-size: 15px;">
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       	<div class="data-table" style="overflow-x:auto">
+		                                       	<!-- <table>
+		                                       		<tr>
+		                                       			<td width="200px;">Daftar pegawai yang tidak hadir pada hari <b id="hari_ini">(sekarang)</b>, <b id="tanggal_ini">(sekarang)</b>.</td>
+		                                       		</tr>
+		                                       	</table> -->
+	                                       		<p>Daftar pegawai yang tidak hadir pada hari <b id="hari_ini">(sekarang)</b>, tanggal<br> <b id="tanggal_ini">(sekarang)</b>.</p>
+	                                       	</div>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                        </ul>
+	                        <div class="data-table card" style="overflow-x:auto">
+								  <table id="p_hari_sekarang" class="display paginated" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+									        <th>NIP</th>
+									        <!-- <th>Nama</th> -->
+									        <th>Jabatan</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_tidak_hadir_sekarang">
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end tidak-hadir-sekarang -->
+
+	    <!-- start tidak-hadir-kemarin -->
+	    <div class="popup popup-tidak-hadir-kemarin" id="m-tidak-hadir-kemarin">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_tidak_hadir_kemarin(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Tidak Hadir Hari Kemarin</center></div>
+	                </div>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">
+	                    <div class = "list-block" style="margin-top: 68px">
+	                        <ul style="font-size: 15px;">
+	                           <li>
+	                              <div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       	<div class="data-table">
+	                                       		<!-- <table>
+		                                       		<tr>
+		                                       			<td width="200px;">Daftar pegawai yang tidak hadir pada hari <b id="hari_kemarin">(kemarin)</b>, <b id="tanggal_kemarin">(kemarin)</b>.</td>
+		                                       		</tr>
+		                                       	</table> -->
+		                                       	<p>Daftar pegawai yang tidak hadir pada hari <b id="hari_kemarin">(kemarin)</b>, tanggal<br> <b id="tanggal_kemarin">(kemarin)</b>.</p>
+	                                       	</div>
+	                                       </div>
+	                                    </div>
+	                              </div>
+	                           </li>
+	                        </ul>
+	                        <div class="data-table card" style="overflow-x:auto">
+								  <table id="p_hari_kemarin" class="display paginated1" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+									        <th width="150px;">NIP</th>
+									        <!-- <th width="200px">Nama</th> -->
+									        <th width="150px">Jabatan</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_tidak_hadir_kemarin">
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end tidak-hadir-kemarin -->
+
+	    <!-- start tidak-hadir-tertentu -->
+	    <div class="popup popup-tidak-hadir-tertentu" id="m-tidak-hadir-tertentu">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_tidak_hadir_tertentu(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Tidak Hadir Tertentu</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+		            <form class="list-block">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tanggal</div>
+		                      <div class="item-input">
+		                        <input type="date" id="tanggal_tidak_hadir" name="tanggal">
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_tidak_hadir_tertentu(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 80%;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">
+	                    <div class = "list-block">
+	                        <div class="data-table card" id="t_hadir_tertentu" style="overflow-x:auto ; margin-top: -25px;">
+								  <table id="p_hari_tertentu" class="display paginated2" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+								    	 	<th width="150px;">NIP</th>
+									        <!-- <th width="200px">Nama</th> -->
+									        <th width="150px">Jabatan</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_tidak_hadir_tertentu">
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end tidak-hadir-tertentu -->
+
+	     <!-- start peringkat-kehadiran -->
+	    <div class="popup popup-peringkat-kehadiran" id="m-peringkat-kehadiran">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_peringkat_kehadiran(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Peringkat Kehadiran</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+		            <form class="list-block">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Periode</div>
+		                      <div class="item-input">
+		                        <select id="periode_peringkat" name="periode_peringkat">
+		                        	<option value="0" selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		                 <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Urut Berdasar</div>
+		                      <div class="item-input">
+		                        <select id="peringkat" name="peringkat">
+		                        	<option value="1" selected>Peringkat tertinggi</option>
+		                        	<option value="2">Peringkat terendah</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_peringkat_kehadiran(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 70%;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">                    
+	                    <div class = "list-block" id="t_peringkat_kehadiran">
+	                    	<!-- <ul style="margin-top: -35px; font-size: 15px;">
+			                    <li>
+			                        <div class = "item-content">
+			                            <div class = "item-inner">
+			                                <div class = "item-title">
+			                                    <table>
+			                                       	<tr>
+			                                       		<td width="350px">Jumlah Hari Kerja</td>
+			                                       		<td id="rata_wkt_redpon"></td>
+			                                       	</tr>
+			                                    </table>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </li>
+			                </ul> -->
+	                        <div class="data-table card" style="overflow-x:auto">
+								  <table id="p_peringkat_kehadiran" class="display paginated3" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+								    	 	<!-- <th width="100px">NIP</th> -->
+									        <th width="150px">Pegawai</th>
+									        <th width="100px;">Jml Hari</th>
+									        <th width="100px">Jml Waktu</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_tidak_hadir_peringkat">
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end peringkat-kehadiran -->
+
+	    <!-- start jumlah-absensi -->
+	    <div class="popup popup-jumlah-absensi" id="m-jumlah-absensi">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#"  onclick=back_jumlah_absensi(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Jumlah Absesnsi Tiap Bulan</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+		            <form class="list-block">
+		              <ul>
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Periode</div>
+		                      <div class="item-input">
+		                        <select id="periode_jml" name="periode_jml">
+		                        	<option value="0" selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li> 	
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_jumlah_absensi(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 80%;"">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px; height: 100%;">                    
+	                    <div class = "list-block" id="t_jumlah_absensi">
+	                    	<!-- <ul style="margin-top: -35px; font-size: 15px;">
+			                    <li>
+			                        <div class = "item-content">
+			                            <div class = "item-inner">
+			                                <div class = "item-title">
+			                                    <table>
+			                                       	<tr>
+			                                       		<td width="350px">Jumlah Hari Kerja</td>
+			                                       		<td id="rata_wkt_redpon"></td>
+			                                       	</tr>
+			                                    </table>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </li>
+			                </ul> -->
+	                        <div class="data-table card" style="overflow-x:auto">
+								  <table id="p_jml_absensi" class="display paginated4" style="width:100%">
+								    <thead>
+								    	<tr style="background: #c3cdd0;">
+								    	 	<!-- <th width="100px">NIP</th> -->
+									        <th width="150px">Pegawai</th>
+									        <th width="100px;">Jml Hari</th>
+									        <th width="100px">Jml Waktu</th>
+									    </tr>
+								    </thead>
+								    <tbody id="buat_jml_absensi">
+								    </tbody>
+								  </table>
+							</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end jumlah-absensi -->
+
+	    <!-- start realisai -->
+	    <div class="popup popup-realisasi" id="m-realisasi">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_realisasi(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Realisasi Anggaran</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="background: #fff; margin-top: 68px; margin-left: -15px; margin-bottom: -35px; padding: 0 15px;">
+	            	<form class="list-block">
+		              <ul>    
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-title label">Tahun</div>
+		                      <div class="item-input">
+		                        <select name = "r_tahun" id="r_tahun">
+		                            <option value="0" selected disabled>-Pilih-</option>
+		                        </select>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>   
+		                <li>
+		                  <div class="item-content">
+		                    <div class="item-inner">
+		                      <div class="item-input">
+		                      </div>
+		                      <div class="item-input">
+		                        <a href="#" class="button active" onclick=proses_realisasi(); style="background: #24c0f2; border-color: #24c0f2; color: #fff;">Proses</a>
+		                      </div>
+		                    </div>
+		                  </div>
+		                </li>
+		              </ul>
+		            </form>
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 80%;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px;">
+	                    <div class = "list-block" id="hasil" style="margin-left:  20px; margin-right: 20px; color: #000;">
+	                    	<div class = "list simple-list">
+		                    	<ul style="margin-top: -36px; padding-top: 15px; font-size: 15px;" id="buat_realisasi">
+		                           <!-- <li>
+			                           	<a href = "#" onclick=realisasi_detail();>   
+			                              	<div class = "item-content">
+			                                    <div class = "item-inner">
+			                                       <div class = "item-title">
+			                                       		<table style="color: #000;">
+			                                       			<thead>
+			                                       				<tr>
+				                                       				<td width="350px">Kegiatan 1</td>
+				                                       				<td >Rp. 3.434.776.000</td>
+				                                       			</tr>
+			                                       			</thead>
+			                                       		</table>
+			                                       </div>
+			                                    </div>
+			                              </div>
+			                            </a>
+		                           </li> -->
+		                        </ul>
+	                    	</div>
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end realisasi detail -->
+
+	    <!-- start realisai detail -->
+	    <div class="popup popup-realisasi-detail" id="m-realisasi-detail">
+	        <div class = "view view-main">         
+	            <div class = "navbar" style="height: 68px;">
+	               <div data-page="index" class="navbar-inner" style="background: #24c0f2;">
+	               	  <div class="left">
+		                <a href="#" onclick=back_realisasi_detail(); class="link icon-only">
+		                  <i class="icon icon-back"></i> <span></span>
+		                </a>
+		              </div>
+	                  <div class="center sliding"><center style="color: #fff;">Realisasi Perbulan</center></div>
+	                </div>
+	            </div>
+	            <div class="content-block" style="background: #fff; margin-top: 68px;">
+	            	<div class = "item-content">
+	                    <div class = "item-inner">
+	                        <div class = "item-title">
+	                            <table style="color: #000; margin-top: 75px; margin-bottom: -20px;">
+		                                <tr>
+		                                    <td width="152px">Nama Kegiatan</td>
+		                                    <td id="r_nama_kegiatan"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td width="120px">Kode</td>
+		                                    <td id="r_kode"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td>Tahun</td>
+		                                    <td id="r_thn"></td>
+		                                </tr>
+		                            </table>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	            </div>
+	            <div class = "pages navbar-through" style="padding-top: 0px; height: 80%;">
+	               <div class = "page">
+	                  <div class = "page-content" style="background: #fff; padding-top: 0px;">
+	                    <div class = "list-block" id="hasil">
+	                    	<div class="row" style="margin-top: -20px; margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Januari</div>
+							    <div class="col-50" id="realisasi_bulan1" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Februari</div>
+							    <div class="col-50" id="realisasi_bulan2" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Maret</div>
+							    <div class="col-50" id="realisasi_bulan3" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">April</div>
+							    <div class="col-50" id="realisasi_bulan4" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Mei</div>
+							    <div class="col-50" id="realisasi_bulan5" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Juni</div>
+							    <div class="col-50" id="realisasi_bulan6" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Juli</div>
+							    <div class="col-50" id="realisasi_bulan7" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Agustus</div>
+							    <div class="col-50" id="realisasi_bulan8" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">September</div>
+							    <div class="col-50" id="realisasi_bulan9" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Oktober</div>
+							    <div class="col-50" id="realisasi_bulan10" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">November</div>
+							    <div class="col-50" id="realisasi_bulan11" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Desember</div>
+							    <div class="col-50" id="realisasi_bulan12" align="right"></div>
+							</div>
+							<div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; height: 25px;">
+							    <div class="col-50">Total</div>
+							    <div class="col-50" id="realisasi_bulan_total" align="right"></div>
+							</div>
+	                    	<!-- <ul style="margin-top: -35px; font-size: 15px;">
+	                            <li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan1">Januari</td>
+	                                       				<td id="realisasi_bulan1" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan2">Februari</td>
+	                                       				<td id="realisasi_bulan2" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan3">Maret</td>
+	                                       				<td id="realisasi_bulan3" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan4">April</td>
+	                                       				<td id="realisasi_bulan4" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan5">Mei</td>
+	                                       				<td id="realisasi_bulan5" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan6">Juni</td>
+	                                       				<td id="realisasi_bulan6" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan7">Juli</td>
+	                                       				<td id="realisasi_bulan7" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan8">Agustus</td>
+	                                       				<td id="realisasi_bulan8" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan9">September</td>
+	                                       				<td id="realisasi_bulan9" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan10">Oktober</td>
+	                                       				<td id="realisasi_bulan10" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan11">November</td>
+	                                       				<td id="realisasi_bulan11" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px" id="bulan12">Desember</td>
+	                                       				<td id="realisasi_bulan12" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                          	<li>
+	                           		<div class = "item-content">
+	                                    <div class = "item-inner">
+	                                       <div class = "item-title">
+	                                       		<table style="color: #000;">
+	                                       			<tr height="50px">
+	                                       				<td width="250px">Total</td>
+	                                       				<td id="realisasi_bulan_total" align="right"></td>
+	                                       			</tr>
+	                                       		</table>
+	                                       </div>
+	                                    </div>
+	                             	 </div>
+	                          	</li>
+	                        </ul> -->
+	                    </div>
+	                  </div>	                  
+	               </div>
+	            </div> 
+	        </div>
+	    </div>
+	    <!-- end reaslisasi detail-->
+      
+      <!-- <script type = "text/javascript" 
+         src = "https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/js/framework7.min.js"></script> -->
+      <script type="text/javascript" src="js/framework7-1.4.2.js"></script>
+      <script type="text/javascript" src="plugin/jquery-3.3.1.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="cordova.js"></script>
+      <script>
+	      	$(document).ready(function() {
+			    $('#t_waktu_proses').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#t_ikm').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#t_pengaduan').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#p_hari_sekarang').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#p_hari_kemarin').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#p_hari_tertentu').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#p_peringkat_kehadiran').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			    $('#p_jml_absensi').DataTable( {
+			        "paging"   : false,
+			        "ordering" : false,
+			        "searching": false,
+			        "info"     : false
+			    } );
+			} );
+      </script>
+      <script>
+         // Here you can initialize the app
+         var myApp = new Framework7();
+
+         // If your using custom DOM library, then save it to $$ variable
+         var $$ = Dom7;
+
+         // Add the view
+         var mainView = myApp.addView('.view-main', {
+            
+            // enable the dynamic navbar for this view:
+            dynamicNavbar: true
+         });
+
+         var url    = 'http://perizinan.bandung.go.id/';
+	     var server = url+'gampilservice/index.php/sepatu/';
+
+	     var tanggallengkap = new String();
+		 var namahari 		= ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
+		 namahari 			= namahari.split(" ");
+		 var namabulan 		= ("Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember");
+		 namabulan 			= namabulan.split(" ");
+		 var nobulan 		= ("01 02 03 04 05 06 07 08 09 10 11 12");
+		 nobulan 			= nobulan.split(" ");
+		 var tgl 			= new Date();
+		 var hari 			= tgl.getDay();
+		 var tanggal 		= tgl.getDate();
+		 var bulan 			= tgl.getMonth();
+		 var tahun 			= tgl.getFullYear();
+		 tanggallengkap 	= namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " + tahun;
+
+		 // Kalender
+	     var p_tgl_awal = myApp.calendar({
+	        input: '#p_tgl_awal',
+	     });
+	     var p_tgl_akhir = myApp.calendar({
+	            input: '#p_tgl_akhir',
+	      });  
+	     var w_tgl_awal = myApp.calendar({
+	        input: '#w_tgl_awal',
+	     });
+	     var w_tgl_akhir = myApp.calendar({
+	            input: '#w_tgl_akhir',
+	      }); 
+	     var i_tgl_awal = myApp.calendar({
+	        input: '#i_tgl_awal',
+	     });
+	     var i_tgl_akhir = myApp.calendar({
+	            input: '#i_tgl_akhir',
+	      });
+	     var pe_tgl_awal = myApp.calendar({
+	        input: '#pe_tgl_awal',
+	     });
+	     var pe_tgl_akhir = myApp.calendar({
+	            input: '#pe_tgl_akhir',
+	     }); 
+	     var tanggall = myApp.calendar({
+	            input: '#tanggal_tidak_hadir',
+	     }); 
+
+
+	     if(localStorage.getItem("username")==null || localStorage.getItem("password")==null ){
+	            myApp.loginScreen();
+	     }
+	     else{
+	     	 myApp.showPreloader();
+	         setTimeout(function () {
+	            myApp.closeModal('.login-screen', 'true');
+	            myApp.hidePreloader();
+	            startup();
+	            $('#hasil_pemrosesan_izin').hide();
+	            $('#hasil_waktu_proses').hide();
+	            $('#hasil_ikm').hide();
+	            $('#hasil_pengaduan').hide();
+	            $('#hasil_ikm').hide();
+	            $('#hasil').hide();
+	            $('#t_hadir_tertentu').hide();
+	            $('#t_peringkat_kehadiran').hide();
+	            $('#t_jumlah_absensi').hide();
+	         }, 500);
+	     }
+
+         function login(){
+	         	var username = $$('.login-screen input[name = "username"]').val();
+		        var password = $$('.login-screen input[name = "password"]').val();
+		        myApp.showPreloader();
+		        if (username == '') {
+		            myApp.hidePreloader();
+		            myApp.alert('username belum diisi ', '');
+		            $$('.login-screen input[name = "username"]').focus();
+		        }
+		        else if (password == '') {
+		            myApp.hidePreloader();
+		            myApp.alert('password belum diisi ', '');
+		            $$('.login-screen input[name = "password"]').focus();
+		        }
+		        else {
+		        	$$.post(server+'login', {username:username, password:password}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                      myApp.hidePreloader();
+	                      localStorage.setItem('username', username);
+	                      localStorage.setItem('password', password);
+	                      localStorage.setItem('code', res.code);
+	                      localStorage.setItem('token', res.data.token);
+	                      startup();
+	                      $('#hasil_pemrosesan_izin').hide();
+	                      $('#hasil_waktu_proses').hide();
+	                      $('#hasil_ikm').hide();
+	                      $('#hasil_pengaduan').hide();
+			              $('#hasil').hide();
+			              $('#t_hadir_tertentu').hide();
+			              $('#t_peringkat_kehadiran').hide();
+			              $('#t_jumlah_absensi').hide();
+	                      myApp.closeModal('.login-screen');
+	                    }
+	                    else {
+	                      myApp.hidePreloader();
+	                      myApp.alert(res.message,'');
+	                      var user   = document.getElementById('username');
+	                      var pass   = document.getElementById('password');
+		          		  user.value ='';
+		          		  pass.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          		);
+	            }
+         }
+         function startup(){
+	         	var token = localStorage.getItem("token");
+	         	myApp.showPreloader();
+	         	//get bidang
+         		$$.post(server+'data/bidang'+'/'+token, 
+			        	function (data){
+			                var res = JSON.parse(data);
+			                if(res.code==1){
+			                  	myApp.hidePreloader();	
+			                  	$("#p_bidang").empty();
+			                  	$("#p_bidang").append('<option selected disabled>- Pilih --</option>');
+			                  	$.each(res.data, function(key,val){
+								    var markup = "<option value="+val.id_bidang+">"+val.nama_bidang+"</option>";
+		            				$("#p_bidang").append(markup);
+								});
+								$("#w_bidang").empty();
+			                  	$("#w_bidang").append('<option selected disabled>-- Pilih --</option>');
+			                  	$.each(res.data, function(key,val){
+								    var markup = "<option value="+val.id_bidang+">"+val.nama_bidang+"</option>";
+		            				$("#w_bidang").append(markup);
+								});
+								$("#i_bidang").empty();
+			                  	$("#i_bidang").append('<option selected disabled>-- Pilih --</option>');
+			                  	$.each(res.data, function(key,val){
+								    var markup = "<option value="+val.id_bidang+">"+val.nama_bidang+"</option>";
+		            				$("#i_bidang").append(markup);
+								});
+								$("#pe_bidang").empty();
+			                  	$("#pe_bidang").append('<option selected disabled>-- Pilih --</option>');
+			                  	$.each(res.data, function(key,val){
+								    var markup = "<option value="+val.id_bidang+">"+val.nama_bidang+"</option>";
+		            				$("#pe_bidang").append(markup);
+								});
+			                }
+			                else {
+			                   myApp.hidePreloader();
+			                   myApp.alert(res.message,'');
+			                }
+			            },
+			            function (xhr, status) {
+			                myApp.hideIndicator();
+			                myApp.alert('Koneksi ke Server Bermasalah','');
+			            }
+				);
+         }
+         function logout(){
+	            myApp.confirm('Apakah yakin ingin logout?', '', function () {
+	              var username = document.getElementById('username');
+	              var password = document.getElementById('password');
+		          username.value='';
+		          password.value='';
+	              localStorage.clear();
+	              location.reload();
+	            });
+	     }
+	     function keluar(){
+	            myApp.confirm('Apakah yakin ingin keluar aplikasi?', '', function () {
+	              navigator.app.exitApp();
+	            });
+	     }  
+
+	     function onDeviceReady() {
+		    document.addEventListener('backbutton', onBackKeyDown, false);
+		 }
+	     function onBackKeyDown(){
+			    var mlogin 	   = $$('#m-login').css("display");
+			    var mkinerja   = $$('#m-kinerja').css("display");
+			    var mpresensi  = $$('#m-presensi').css("display");
+			    var mrealisasi = $$('#m-realisasi').css("display");
+			    var mprosesizin= $$('#m-pemrosesan-izin').css("display");
+			    var mwktproses = $$('#m-waktu-proses').css("display");
+			    var mikm 	   = $$('#m-ikm').css("display");
+			    var mpengaduan = $$('#m-pengaduan').css("display");
+			    var mtidakhadirsekarang = $$('#m-tidak-hadir-sekarang').css("display");
+			    var mtidakhadirkemarin  = $$('#m-tidak-hadir-kemarin').css("display");
+			    var mtidakhadirtertentu = $$('#m-tidak-hadir-tertentu').css("display");
+			    var mperingkatkehadiran = $$('#m-peringkat-kehadiran').css("display");
+			    var mjumlahabsensi      = $$('#m-jumlah-absensi').css("display");
+			    var mrealisasidetail    = $$('#m-realisasi-detail').css("display");
+			    var cpage 	   = mainView.activePage;
+			    var cpagename  = cpage.name;
+			    console.log(cpagename);
+			   if(mlogin == 'block'){
+			        myApp.confirm('Apakah yakin ingin keluar aplikasi?', '', function () {
+		              navigator.app.exitApp();
+		            });
+			    }
+			    else if(mkinerja == 'block'){
+			        myApp.closeModal();
+			        return false;
+			    } 
+			    else if(mprosesizin == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-kinerja');
+			        }, 500);
+			    }
+			    else if(mwktproses == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-kinerja');
+			        }, 500);
+			    }
+			    else if(mikm == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-kinerja');
+			        }, 500);
+			    }
+			    else if(mpengaduan == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-kinerja');
+			        }, 500);
+			    }
+			    else if(mpresensi == 'block'){
+			    	myApp.closeModal();
+			    	return false;
+			    }
+			    else if(mtidakhadirsekarang == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-presensi');
+			        }, 500);
+			    }
+			    else if(mtidakhadirkemarin == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-presensi');
+			        }, 500);
+			    }
+			    else if(mtidakhadirtertentu == 'block'){
+			        myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-presensi');
+			        }, 500);
+			    }
+			    else if(mperingkatkehadiran == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-presensi');
+			        }, 500);
+			    }
+			    else if(mjumlahabsensi == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-presensi');
+			        }, 500);
+			    }
+			    else if(mrealisasi == 'block'){
+			    	myApp.closeModal();
+			    	return false;
+			    }
+			    else if(mrealisasidetail == 'block'){
+			    	myApp.showPreloader();
+			        setTimeout(function () {
+			            myApp.hidePreloader();
+			            myApp.closeModal();
+			    		myApp.popup('.popup-realisasi');
+			        }, 500);
+			    }
+			    else if(cpagename == 'home'){
+			    	myApp.confirm('Apakah yakin ingin keluar aplikasi?', '', function () {
+		              navigator.app.exitApp();
+		            });
+			    }	
+			    else{
+			      	mainView.router.back();
+			    }
+		 }
+
+         /* menu kinerja */
+         function kinerja(){
+         		myApp.popup('.popup-kinerja');
+         }
+	        /* sub menu kinerja */
+	        function pemrosesan_izin(){
+	         	myApp.closeModal();
+         		myApp.popup('.popup-pemrosesan-izin');
+	        }
+	        function waktu_proses(){
+	        	myApp.closeModal();
+         		myApp.popup('.popup-waktu-proses');
+	        }
+	        function ikm(){
+	        	myApp.closeModal();
+         		myApp.popup('.popup-ikm');
+	        }
+	        function pengaduan(){
+	        	myApp.closeModal();
+         		myApp.popup('.popup-pengaduan');
+	        }
+	        // get jenis izin
+	        function get_p_jns_izin(){
+	         	var bidang 	= $$('#p_bidang').val();
+	         	var token   = localStorage.getItem("token");
+	         	myApp.showPreloader();
+		        //get jenis izin
+		        $$.post(server+'data/jenis_izin'+'/'+token, {id_bidang:bidang}, 
+				    function (data){
+				                var res = JSON.parse(data);
+				                if(res.code==1){
+				                  	myApp.hidePreloader();	
+				                  	$("#p_jenis_izin").empty();
+				                  	$("#p_jenis_izin").append('<option value="0" selected>Pilih Semua</option>');
+				                  	$.each(res.data, function(key,val){
+									    var markup = "<option value="+val.jns_ijin+">"+val.nama_jns_ijin+"</option>";
+			            				$("#p_jenis_izin").append(markup);
+									});
+				                }
+				                else {
+				                   myApp.hidePreloader();
+				                   myApp.alert(res.message,'');
+				                }
+				    },
+				    function (xhr, status) {
+				        myApp.hideIndicator();
+				        myApp.alert('Koneksi ke Server Bermasalah','');
+				    }
+				);	
+	        }
+	        function get_w_jns_izin(){
+	         	var bidang 	= $$('#w_bidang').val();
+	         	var token   = localStorage.getItem("token");
+	         	myApp.showPreloader();
+		        //get jenis izin
+		        $$.post(server+'data/jenis_izin'+'/'+token, {id_bidang:bidang}, 
+				    function (data){
+				                var res = JSON.parse(data);
+				                if(res.code==1){
+				                  	myApp.hidePreloader();	
+				                  	$("#w_jenis_izin").empty();
+				                  	$("#w_jenis_izin").append('<option value="0" selected>Pilih Semua</option>');
+				                  	$.each(res.data, function(key,val){
+									    var markup = "<option value="+val.jns_ijin+">"+val.nama_jns_ijin+"</option>";
+			            				$("#w_jenis_izin").append(markup);
+									});
+				                }
+				                else {
+				                   myApp.hidePreloader();
+				                   myApp.alert(res.message,'');
+				                }
+				    },
+				    function (xhr, status) {
+				        myApp.hideIndicator();
+				        myApp.alert('Koneksi ke Server Bermasalah','');
+				    }
+				);	
+	        }
+	        function get_i_jns_izin(){
+	         	var bidang 	= $$('#i_bidang').val();
+	         	var token   = localStorage.getItem("token");
+	         	myApp.showPreloader();
+		        //get jenis izin
+		        $$.post(server+'data/jenis_izin'+'/'+token, {id_bidang:bidang}, 
+				    function (data){
+				                var res = JSON.parse(data);
+				                if(res.code==1){
+				                  	myApp.hidePreloader();	
+				                  	$("#i_jenis_izin").empty();
+				                  	$("#i_jenis_izin").append('<option value="0" selected>Pilih Semua</option>');
+				                  	$.each(res.data, function(key,val){
+									    var markup = "<option value="+val.jns_ijin+">"+val.nama_jns_ijin+"</option>";
+			            				$("#i_jenis_izin").append(markup);
+									});
+				                }
+				                else {
+				                   myApp.hidePreloader();
+				                   myApp.alert(res.message,'');
+				                }
+				    },
+				    function (xhr, status) {
+				        myApp.hideIndicator();
+				        myApp.alert('Koneksi ke Server Bermasalah','');
+				    }
+				);	
+	        }
+	        function get_pe_jns_izin(){
+	         	var bidang 	= $$('#pe_bidang').val();
+	         	var token   = localStorage.getItem("token");
+	         	myApp.showPreloader();
+		        //get jenis izin
+		        $$.post(server+'data/jenis_izin'+'/'+token, {id_bidang:bidang}, 
+				    function (data){
+				                var res = JSON.parse(data);
+				                if(res.code==1){
+				                  	myApp.hidePreloader();	
+				                  	$("#pe_jenis_izin").empty();
+				                  	$("#pe_jenis_izin").append('<option value="0" selected>Pilih Semua</option>');
+				                  	$.each(res.data, function(key,val){
+									    var markup = "<option value="+val.jns_ijin+">"+val.nama_jns_ijin+"</option>";
+			            				$("#pe_jenis_izin").append(markup);
+									});
+				                }
+				                else {
+				                   myApp.hidePreloader();
+				                   myApp.alert(res.message,'');
+				                }
+				    },
+				    function (xhr, status) {
+				        myApp.hideIndicator();
+				        myApp.alert('Koneksi ke Server Bermasalah','');
+				    }
+				);	
+	        }
+	   		/* all aksi button menu kinerja */
+	   		function back_proses_izin(){
+	   			var awal    = document.getElementById('p_tgl_awal');
+	            var akhir   = document.getElementById('p_tgl_akhir');
+	            var jns_izin= document.getElementById('p_jenis_izin');
+		        awal.value  ='';
+		        akhir.value ='';
+		        jns_izin.value ='';
+		        myApp.closeModal();
+		        myApp.popup('.popup-kinerja');
+	   		}
+	   		function back_waktu_proses(){
+	   			var awal    = document.getElementById('w_tgl_awal');
+	            var akhir   = document.getElementById('w_tgl_akhir');
+	            var jns_izin= document.getElementById('w_jenis_izin');
+		        awal.value  ='';
+		        akhir.value ='';
+		        jns_izin.value ='';
+		        myApp.closeModal();
+		        myApp.popup('.popup-kinerja');
+	   		}
+	   		function back_ikm(){
+	   			var awal    = document.getElementById('i_tgl_awal');
+	            var akhir   = document.getElementById('i_tgl_akhir');
+	            var jns_izin= document.getElementById('i_jenis_izin');
+		        awal.value  ='';
+		        akhir.value ='';
+		        jns_izin.value ='';
+		        myApp.closeModal();
+		        myApp.popup('.popup-kinerja');
+	   		}
+	   		function back_pengaduan(){
+	   			var awal    = document.getElementById('pe_tgl_awal');
+	            var akhir   = document.getElementById('pe_tgl_akhir');
+	            var jns_izin= document.getElementById('pe_jenis_izin');
+		        awal.value  ='';
+		        akhir.value ='';
+		        jns_izin.value ='';
+		        myApp.closeModal();
+		        myApp.popup('.popup-kinerja');
+	   		}
+	    	function proses_izin(){
+	    		var tgl_awal	= $$('#p_tgl_awal').val();
+	            var tgl_akhir 	= $$('#p_tgl_akhir').val();
+	            var bidang 	 	= $$('#p_bidang').val();
+	            var jns_izin  	= $$('#p_jenis_izin').val();
+	            var token   	= localStorage.getItem("token");
+	            myApp.showPreloader();
+	            if (tgl_awal == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#p_tgl_awal').focus();
+	            }
+	            else if (tgl_akhir == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#p_tgl_akhir').focus();
+	            }
+	            else if (bidang == '0') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('bidang belum dipilih ', '');
+	            	$$('#p_bidang').focus();
+	            }
+	            else if (jns_izin == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('jenis izin belum dipilih ', '');
+	            	$$('#p_jenis_izin').focus();
+	            }
+	            else {
+	            	$$.post(server+'data/pemrosesan_izin'+'/'+token, {id_bidang:bidang, jns_ijin:jns_izin, tgl_awal:tgl_awal, tgl_akhir:tgl_akhir}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                      myApp.hidePreloader();
+	                      $('#hasil_pemrosesan_izin').show();
+	                      $("#izin_dalam_proses").empty();
+	                      $("#verivfikasi_pendaftaran").empty();
+	                      $("#validasi_bidang").empty();
+	                      $("#validasi_teknis").empty();
+	                      $("#persetujuan_bidang").empty();
+	                      $("#pembayaran").empty();
+	                      $("#survey_ikm").empty();
+	                      $("#draf_izin").empty();
+	                      $("#tanda_tangan").empty();
+	                      $("#cetak_izin").empty();
+	                      $("#penyerahan_izin").empty();
+	                      $("#pos").empty();
+	                      $("#samapai_pemohon").empty();
+	                      $("#izin_ditolak").empty();
+	                      $("#ditolak_v_bidang").empty();
+	                      $("#ditolak_p_bidang").empty();
+	                      $("#by_wkt_bayar").empty();
+	                      $("#by_wkt_survey").empty();
+	                      $("#total_pengajuan").empty();
+	                      var dalam_proses 				= res.data.dalam_proses;
+	                      var verifikasi_pendaftaran 	= res.data.verifikasi_pendaftaran;
+	                      var validasi_bidang 			= res.data.validasi_bidang;
+	                      var verifikasi_teknis 		= res.data.verifikasi_teknis;
+	                      var persetujuan_bidang 		= res.data.persetujuan_bidang;
+	                      var pembayaran 				= res.data.pembayaran;
+	                      var survey_ikm 				= res.data.survey_ikm;
+	                      var draft_izin 				= res.data.draft_izin;
+	                      var tanda_tangan 				= res.data.tanda_tangan;
+	                      var cetak_izin 				= res.data.cetak_izin;
+	                      var izin_selesai 				= res.data.izin_selesai;
+	                      var penyerahan_izin 			= res.data.penyerahan_izin;
+	                      var pos 						= res.data.pos;
+	                      var sampai_pemohon 			= res.data.sampai_pemohon;
+	                      var izin_ditolak 				= res.data.izin_ditolak;
+	                      var tolak_validasi 			= res.data.tolak_validasi;
+	                      var tolak_persetujuan 		= res.data.tolak_persetujuan;
+	                      var tolak_waktu_bayar 		= res.data.tolak_waktu_bayar;
+	                      var tolak_waktu_survey 		= res.data.tolak_waktu_survey;
+	                      document.getElementById("izin_dalam_proses").innerHTML 		= dalam_proses;
+	                      document.getElementById("verivfikasi_pendaftaran").innerHTML	= verifikasi_pendaftaran;
+	                      document.getElementById("validasi_bidang").innerHTML 			= validasi_bidang;
+	                      document.getElementById("validasi_teknis").innerHTML 			= verifikasi_teknis;
+	                      document.getElementById("persetujuan_bidang").innerHTML 		= persetujuan_bidang;
+	                      document.getElementById("pembayaran").innerHTML 				= pembayaran;
+	                      document.getElementById("survey_ikm").innerHTML 				= survey_ikm;
+	                      document.getElementById("draf_izin").innerHTML 				= draft_izin;
+	                      document.getElementById("tanda_tangan").innerHTML 			= tanda_tangan;
+	                      document.getElementById("cetak_izin").innerHTML 				= cetak_izin;
+	                      document.getElementById("izin_selesai").innerHTML				= izin_selesai;
+	                      document.getElementById("penyerahan_izin").innerHTML 			= penyerahan_izin;
+	                      document.getElementById("pos").innerHTML 						= pos;
+	                      document.getElementById("samapai_pemohon").innerHTML 			= sampai_pemohon;
+	                      document.getElementById("izin_ditolak").innerHTML 			= izin_ditolak;
+	                      document.getElementById("ditolak_v_bidang").innerHTML 		= tolak_validasi;
+	                      document.getElementById("ditolak_p_bidang").innerHTML 		= tolak_persetujuan;
+	                      document.getElementById("by_wkt_bayar").innerHTML 			= tolak_waktu_bayar;
+	                      document.getElementById("by_wkt_survey").innerHTML 			= tolak_waktu_survey;
+	                      var total = parseInt(dalam_proses)+parseInt(verifikasi_pendaftaran)+parseInt(validasi_bidang)+parseInt(verifikasi_teknis)+parseInt(persetujuan_bidang)+parseInt(pembayaran)+parseInt(survey_ikm)+parseInt(draft_izin)+parseInt(tanda_tangan)+parseInt(cetak_izin)+parseInt(izin_selesai)+parseInt(penyerahan_izin)+parseInt(pos)+parseInt(sampai_pemohon)+parseInt(izin_ditolak)+parseInt(tolak_validasi)+parseInt(tolak_persetujuan)+parseInt(tolak_waktu_bayar)+parseInt(tolak_waktu_survey);
+	                      document.getElementById("total_pengajuan").innerHTML = total;
+	                    }
+	                    else {
+	                      myApp.hidePreloader();
+	                      myApp.alert(res.message,'');
+	                      var awal    = document.getElementById('p_tgl_awal');
+	                	  var akhir   = document.getElementById('p_tgl_akhir');
+	                	  var jns_izin= document.getElementById('p_jenis_izin');
+		          		  awal.value  ='';
+			          	  akhir.value ='';
+			          	  jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          		);
+	            }
+	    	}
+	    	function proses_waktu(){
+	    		var tgl_awal	= $$('#w_tgl_awal').val();
+	            var tgl_akhir 	= $$('#w_tgl_akhir').val();
+	            var bidang 	 	= $$('#w_bidang').val();
+	            var jns_izin  	= $$('#w_jenis_izin').val();
+	            var token   	= localStorage.getItem("token");
+	            myApp.showPreloader();
+	            if (tgl_awal == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#w_tgl_awal').focus();
+	            }
+	            else if (tgl_akhir == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#w_tgl_akhir').focus();
+	            }
+	            else if (bidang == '0') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('bidang belum dipilih ', '');
+	            	$$('#w_bidang').focus();
+	            }
+	            else if (jns_izin == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('jenis izin belum dipilih ', '');
+	            	$$('#w_jenis_izin').focus();
+	            }
+	            else {
+	            	$$.post(server+'data/waktu_proses'+'/'+token, {id_bidang:bidang, jns_ijin:jns_izin, tgl_awal:tgl_awal, tgl_akhir:tgl_akhir}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                     	myApp.hidePreloader();
+	                     	$('#hasil_waktu_proses').show();
+	                     	$('#buat_waktu_proses').empty();
+			                $.each(res.data, function(key,val){  	
+								var markup = "<tr><td>"+val.jenis_ijin+"</td><td>"+val.waktu_proses+"</td></tr>";
+			           			$("#buat_waktu_proses").append(markup);
+							});
+	                    }
+	                    else {
+		                    myApp.hidePreloader();
+		                    myApp.alert(res.message,'');
+		                    var awal    = document.getElementById('w_tgl_awal');
+		                	var akhir   = document.getElementById('w_tgl_akhir');
+		                	var jns_izin= document.getElementById('w_jenis_izin');
+			          		awal.value  ='';
+				          	akhir.value ='';
+				          	jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          		);
+	            }
+	    	}
+	    	function proses_ikm(){
+	    		var tgl_awal	= $$('#i_tgl_awal').val();
+	            var tgl_akhir 	= $$('#i_tgl_akhir').val();
+	            var bidang 	 	= $$('#i_bidang').val();
+	            var jns_izin  	= $$('#i_jenis_izin').val();
+	            var token   	= localStorage.getItem("token");
+	            myApp.showPreloader();
+	            if (tgl_awal == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#i_tgl_awal').focus();
+	            }
+	            else if (tgl_akhir == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#i_tgl_akhir').focus();
+	            }
+	            else if (bidang == '0') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('bidang belum dipilih ', '');
+	            	$$('#i_bidang').focus();
+	            }
+	            else if (jns_izin == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('jenis izin belum dipilih ', '');
+	            	$$('#i_jenis_izin').focus();
+	            }
+	            else {
+	            	$$.post(server+'data/ikm'+'/'+token, {id_bidang:bidang, jns_ijin:jns_izin, tgl_awal:tgl_awal, tgl_akhir:tgl_akhir}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                     	myApp.hidePreloader();
+	                     	$('#hasil_ikm').show();
+	                     	var jml_peserta = res.data.jml_peserta;
+	                     	var nilai_ikm 	= res.data.nilai_ikm;
+	                     	var nilai_indeks= res.data.nilai_indeks;
+	                     	var mutu_layanan= res.data.mutu_layanan;
+	                      	document.getElementById("jumlah_peserta").innerHTML = jml_peserta;
+	                      	document.getElementById("nilai_ikm").innerHTML 		= nilai_ikm;
+	                      	document.getElementById("nilai_indeks").innerHTML 	= nilai_indeks;
+	                      	document.getElementById("mutu_pelayanan").innerHTML = mutu_layanan;
+	                     	$('#buat_ikm').empty();
+			                $.each(res.data.per_indikator, function(key,val){  	
+								var markup = "<tr><td>"+val.indikator+"</td><td><center>"+val.nilai+"</center></td><td>"+val.kategori+"</td></tr>";
+			           			$("#buat_ikm").append(markup);
+							});
+	                    }
+	                    else {
+		                    myApp.hidePreloader();
+		                    myApp.alert(res.message,'');
+		                    var awal    = document.getElementById('i_tgl_awal');
+		                	var akhir   = document.getElementById('i_tgl_akhir');
+		                	var jns_izin= document.getElementById('i_jenis_izin');
+			          		awal.value  ='';
+				          	akhir.value ='';
+				          	jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          		);
+	            }
+	    	}
+	    	function proses_pengaduan(){
+	    		var tgl_awal	= $$('#pe_tgl_awal').val();
+	            var tgl_akhir 	= $$('#pe_tgl_akhir').val();
+	            var bidang 	 	= $$('#pe_bidang').val();
+	            var jns_izin  	= $$('#pe_jenis_izin').val();
+	            var token   	= localStorage.getItem("token");
+	            myApp.showPreloader();
+	            if (tgl_awal == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#pe_tgl_awal').focus();
+	            }
+	            else if (tgl_akhir == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('tanggal belum dipilih ', '');
+	            	$$('#pe_tgl_akhir').focus();
+	            }
+	            else if (bidang == '0') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('bidang belum dipilih ', '');
+	            	$$('#pe_bidang').focus();
+	            }
+	            else if (jns_izin == '') {
+	            	myApp.hidePreloader();
+	            	myApp.alert('jenis izin belum dipilih ', '');
+	            	$$('#pe_jenis_izin').focus();
+	            }
+	            else {
+	            	$$.post(server+'data/pengaduan'+'/'+token, {id_bidang:bidang, jns_ijin:jns_izin, tgl_awal:tgl_awal, tgl_akhir:tgl_akhir}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                      myApp.hidePreloader();
+	                      $('#hasil_pengaduan').show();
+	                      $("#rata_wkt_redpon").empty();
+	                      var waktu_respond = res.data.waktu_respond;
+	                      document.getElementById("rata_wkt_redpon").innerHTML = waktu_respond;
+	                      $("#buat_pengaduan").empty();
+			                $.each(res.data.per_kategori, function(key,val){  	
+								var markup = "<tr><td>"+val.kategori+"</td><td><center>"+val.jml+"</center></td></tr>";
+			           			$("#buat_pengaduan").append(markup);
+							});
+	                    }
+	                    else {
+	                      myApp.hidePreloader();
+	                      myApp.alert(res.message,'');
+	                      var awal    = document.getElementById('pe_tgl_awal');
+		                  var akhir   = document.getElementById('pe_tgl_akhir');
+		                  var jns_izin= document.getElementById('pe_jenis_izin');
+		          		  awal.value  ='';
+			          	  akhir.value ='';
+			          	  jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          		);
+	            }
+	    	}
+
+	     /* menu presensi */
+         function presensi(){
+         		myApp.popup('.popup-presensi');
+         }
+         	/* sub menu realisasi */
+         	function tidak_hadir_sekarang(){
+         		var token = localStorage.getItem("token");
+			    document.getElementById("hari_ini").innerHTML 	= namahari[hari];
+			    document.getElementById("tanggal_ini").innerHTML= tanggal + " " + namabulan[bulan] + " " + tahun;		   	
+			   	var a = parseInt(bulan)+parseInt(1);
+			   	if (a > 9) {
+			   		var tgl_sekarang = tahun + "-" + a + "-" + tanggal;
+			   	}
+			   	else{
+			   		var tgl_sekarang = tahun + "-0" + a + "-" + tanggal;
+			   	}
+			   	myApp.showPreloader();
+			    $$.post(server+'data/presensi_pegawai'+'/'+token, {tanggal:tgl_sekarang}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                     	myApp.hidePreloader();
+	                     	myApp.closeModal();
+	                     	myApp.popup('.popup-tidak-hadir-sekarang');
+	                     	$('#buat_tidak_hadir_sekarang').empty();
+			                $.each(res.data, function(key,val){  	
+								var markup = "<tr><td>"+val.nip+"<br>"+val.nama+"</td><td>"+val.jabatan+"</td></tr>";
+			           			$("#buat_tidak_hadir_sekarang").append(markup);
+							});
+							// pagination
+							$('#paging').remove();
+							$('table.paginated').each(function() {
+								    var currentPage = 0;
+								    var numPerPage = 15;
+								    var $table = $(this);
+								    $table.bind('repaginate', function() {
+								        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+								    });
+								    $table.trigger('repaginate');
+								    var numRows = $table.find('tbody tr').length;
+								    var numPages = Math.ceil(numRows / numPerPage);
+								    var $pager = $('<div class="pager" id="paging"></div>');
+								    for (var page = 0; page < numPages; page++) {
+								        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+								            newPage: page
+								        }, function(event) {
+								            currentPage = event.data['newPage'];
+								            $table.trigger('repaginate');
+								            $(this).addClass('active').siblings().removeClass('active');
+								        }).appendTo($pager).addClass('clickable');
+								    }
+								    $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+							});
+	                    }
+	                    else {
+		                    myApp.hidePreloader();
+		                    myApp.alert(res.message,'');
+		                    var awal    = document.getElementById('w_tgl_awal');
+		                	var akhir   = document.getElementById('w_tgl_akhir');
+		                	var jns_izin= document.getElementById('w_jenis_izin');
+			          		awal.value  ='';
+				          	akhir.value ='';
+				          	jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          	);
+         	}
+         	function tidak_hadir_kemarin(){
+         		var token = localStorage.getItem("token");
+			    document.getElementById("hari_kemarin").innerHTML 	= namahari[hari-1];
+			    document.getElementById("tanggal_kemarin").innerHTML= tanggal-1 + " " + namabulan[bulan] + " " + tahun;		   	
+			   	var a = parseInt(bulan)-parseInt(1);
+			   	if (a > 9) {
+			   		var tgl_sekarang = tahun + "-" + a + "-" + tanggal
+			   	}
+			   	else{
+			   		var tgl_sekarang = tahun + "-0" + a + "-" + tanggal
+			   	}
+			   	myApp.showPreloader();
+			    $$.post(server+'data/presensi_pegawai'+'/'+token, {tanggal:tgl_sekarang}, 
+	                  function (data){
+	                    var res = JSON.parse(data);
+	                    if(res.code==1){
+	                     	myApp.hidePreloader();
+	                     	myApp.closeModal();
+	                     	myApp.popup('.popup-tidak-hadir-kemarin');
+	                     	$('#buat_tidak_hadir_kemarin').empty();
+			                $.each(res.data, function(key,val){  	
+								var markup = "<tr><td>"+val.nip+"<br>"+val.nama+"</td><td>"+val.jabatan+"</td></tr>";
+			           			$("#buat_tidak_hadir_kemarin").append(markup);
+							});
+							// pagination
+							$('#paging').remove();
+							$('table.paginated1').each(function() {
+								    var currentPage = 0;
+								    var numPerPage = 15;
+								    var $table = $(this);
+								    $table.bind('repaginate', function() {
+								        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+								    });
+								    $table.trigger('repaginate');
+								    var numRows = $table.find('tbody tr').length;
+								    var numPages = Math.ceil(numRows / numPerPage);
+								    var $pager = $('<div class="pager" id="paging"></div>');
+								    for (var page = 0; page < numPages; page++) {
+								        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+								            newPage: page
+								        }, function(event) {
+								            currentPage = event.data['newPage'];
+								            $table.trigger('repaginate');
+								            $(this).addClass('active').siblings().removeClass('active');
+								        }).appendTo($pager).addClass('clickable');
+								    }
+								    $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+							});
+	                    }
+	                    else {
+		                    myApp.hidePreloader();
+		                    myApp.alert(res.message,'');
+		                    var awal    = document.getElementById('w_tgl_awal');
+		                	var akhir   = document.getElementById('w_tgl_akhir');
+		                	var jns_izin= document.getElementById('w_jenis_izin');
+			          		awal.value  ='';
+				          	akhir.value ='';
+				          	jns_izin.value ='';
+	                    }
+	                  },
+	                  function (xhr, status) {
+	                    myApp.hideIndicator();
+	                    myApp.alert('Koneksi ke Server Bermasalah','');
+	                  }
+	          	);
+         	}
+         	function tidak_hadir_tertentu(){
+         		myApp.closeModal();
+         		myApp.popup('.popup-tidak-hadir-tertentu');
+         	}
+         	function peringkat_kehadiran(){
+         		var a = parseInt(bulan)+parseInt(1);
+         		if (a > 9) {
+			   		var period = tahun+"-" + a;
+			   	}
+			   	else{
+			   		var period = tahun+"-0" + a;
+			   	}
+				$("#periode_peringkat").empty();
+				$("#periode_peringkat").append('<option value='+period+' selected disabled>'+namabulan[bulan] + " " + tahun+'</option>');
+				for (var i=0; i<12; i++) {
+					var markup = "<option value="+tahun + "-" + nobulan[i]+">"+namabulan[i] + " " + tahun+"</option>";
+				    $("#periode_peringkat").append(markup);
+				}
+				myApp.closeModal();
+         		myApp.popup('.popup-peringkat-kehadiran');
+         	}
+         	function jumlah_absensi_bulan(){
+         		var a = parseInt(bulan)+parseInt(1);
+         		if (a > 9) {
+			   		var period = tahun+"-" + a;
+			   	}
+			   	else{
+			   		var period = tahun+"-0" + a;
+			   	}
+         		$("#periode_jml").empty();
+         		$("#periode_jml").append('<option value='+period+' selected disabled>'+namabulan[bulan] + " " + tahun+'</option>');
+				for (var i=0; i<12; i++) {
+					var markup = "<option value="+tahun + "-" + nobulan[i]+">"+namabulan[i] + " " + tahun+"</option>";
+				    $("#periode_jml").append(markup);
+				}
+				// var markup = "<option value="+period+" selected>"+namabulan[bulan] + " " + tahun+"</option>";
+			 //    $("#periode_jml").append(markup);
+			 	myApp.closeModal();
+         		myApp.popup('.popup-jumlah-absensi');
+         	}
+         	/* all aksi button presensi */
+         	function back_tidak_hadir_sekarang(){
+         		$('#paging').remove();
+		        myApp.closeModal();
+		        myApp.popup('.popup-presensi');
+	   		}
+	   		function back_tidak_hadir_kemarin(){
+         		$('#paging').remove();
+		        myApp.closeModal();
+		        myApp.popup('.popup-presensi');
+	   		}
+	   		function back_tidak_hadir_tertentu(){
+		        myApp.closeModal();
+		        myApp.popup('.popup-presensi');
+	   		}
+	   		function back_peringkat_kehadiran(){
+		        myApp.closeModal();
+		        myApp.popup('.popup-presensi');
+	   		}
+	   		function back_jumlah_absensi(){
+		        myApp.closeModal();
+		        myApp.popup('.popup-presensi');
+	   		}
+         	function proses_tidak_hadir_tertentu(){
+         		var tanggal	= $$('#tanggal_tidak_hadir').val();
+         		var token   = localStorage.getItem("token");
+         		myApp.showPreloader();
+	        	if (tanggal == '') {
+	        		myApp.hidePreloader();
+	        		myApp.alert('tanggal belum dipilih', '');
+	        	}
+	        	else {
+				    $$.post(server+'data/presensi_pegawai'+'/'+token, {tanggal:tanggal}, 
+		                  function (data){
+		                    var res = JSON.parse(data);
+		                    if(res.code==1){
+		                     	myApp.hidePreloader();
+		                     	$('#t_hadir_tertentu').show();
+		                     	$('#buat_tidak_hadir_tertentu').empty();
+				                $.each(res.data, function(key,val){  	
+									var markup = "<tr><td>"+val.nip+"<br>"+val.nama+"</td><td>"+val.jabatan+"</td></tr>";
+				           			$("#buat_tidak_hadir_tertentu").append(markup);
+								});
+								// pagination
+								$('#paging').remove();
+								$('table.paginated2').each(function() {
+									    var currentPage = 0;
+									    var numPerPage = 15;
+									    var $table = $(this);
+									    $table.bind('repaginate', function() {
+									        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+									    });
+									    $table.trigger('repaginate');
+									    var numRows = $table.find('tbody tr').length;
+									    var numPages = Math.ceil(numRows / numPerPage);
+									    var $pager = $('<div class="pager" id="paging"></div>');
+									    for (var page = 0; page < numPages; page++) {
+									        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+									            newPage: page
+									        }, function(event) {
+									            currentPage = event.data['newPage'];
+									            $table.trigger('repaginate');
+									            $(this).addClass('active').siblings().removeClass('active');
+									        }).appendTo($pager).addClass('clickable');
+									    }
+									    $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+								});
+		                    }
+		                    else {
+			                    myApp.hidePreloader();
+			                    myApp.alert(res.message,'');
+			                    var awal    = document.getElementById('w_tgl_awal');
+			                	var akhir   = document.getElementById('w_tgl_akhir');
+			                	var jns_izin= document.getElementById('w_jenis_izin');
+				          		awal.value  ='';
+					          	akhir.value ='';
+					          	jns_izin.value ='';
+		                    }
+		                  },
+		                  function (xhr, status) {
+		                    myApp.hideIndicator();
+		                    myApp.alert('Koneksi ke Server Bermasalah','');
+		                  }
+		          	);
+	        	}
+         	}
+         	function proses_peringkat_kehadiran(){
+         		var periode		= $$('#periode_peringkat').val();
+         		var peringkat	= $$('#peringkat').val();
+         		var token   	= localStorage.getItem("token");
+         		myApp.showPreloader();
+	        	if (periode == '') {
+	        		myApp.hidePreloader();
+	        		myApp.alert('periode belum dipilih', '');
+	        	}
+	        	else {
+	        		$$.post(server+'data/presensi_periode'+'/'+token, {periode:periode, urutan:peringkat}, 
+		                  function (data){
+		                    var res = JSON.parse(data);
+		                    if(res.code==1){
+		                     	myApp.hidePreloader();
+		                     	$('#t_peringkat_kehadiran').show();
+		                     	$('#buat_tidak_hadir_peringkat').empty();
+				                $.each(res.data, function(key,val){  	
+									var markup = "<tr><td>"+val.nama+"</td><td><center>"+val.jml_hari+"</center></td><td>"+val.jml_waktu+"</td></tr>";
+				           			$("#buat_tidak_hadir_peringkat").append(markup);
+								});
+								// pagination
+								$('#paging').remove();
+								$('table.paginated3').each(function() {
+									    var currentPage = 0;
+									    var numPerPage = 15;
+									    var $table = $(this);
+									    $table.bind('repaginate', function() {
+									        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+									    });
+									    $table.trigger('repaginate');
+									    var numRows = $table.find('tbody tr').length;
+									    var numPages = Math.ceil(numRows / numPerPage);
+									    var $pager = $('<div class="pager" id="paging"></div>');
+									    for (var page = 0; page < numPages; page++) {
+									        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+									            newPage: page
+									        }, function(event) {
+									            currentPage = event.data['newPage'];
+									            $table.trigger('repaginate');
+									            $(this).addClass('active').siblings().removeClass('active');
+									        }).appendTo($pager).addClass('clickable');
+									    }
+									    $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+								});
+		                    }
+		                    else {
+			                    myApp.hidePreloader();
+			                    myApp.alert(res.message,'');
+		                    }
+		                  },
+		                  function (xhr, status) {
+		                    myApp.hideIndicator();
+		                    myApp.alert('Koneksi ke Server Bermasalah','');
+		                  }
+		          	);
+	        	}
+         	}
+         	function proses_jumlah_absensi(){
+         		var periode	= $$('#periode_jml').val();
+         		var token   	= localStorage.getItem("token");
+         		myApp.showPreloader();
+	        	if (periode == '0') {
+	        		myApp.hidePreloader();
+	        		myApp.alert('periode belum dipilih', '');
+	        	}
+	        	else {
+	        		$$.post(server+'data/presensi_periode'+'/'+token, {periode:periode}, 
+		                  function (data){
+		                    var res = JSON.parse(data);
+		                    if(res.code==1){
+		                     	myApp.hidePreloader();
+		                     	$('#t_jumlah_absensi').show();
+		                     	$('#buat_jml_absensi').empty();
+				                $.each(res.data, function(key,val){  	
+									var markup = "<tr><td>"+val.nama+"</td><td><center>"+val.jml_hari+"</center></td><td>"+val.jml_waktu+"</td></tr>";
+				           			$("#buat_jml_absensi").append(markup);
+								});
+								// pagination
+								$('#paging').remove();
+								$('table.paginated4').each(function() {
+									    var currentPage = 0;
+									    var numPerPage = 15;
+									    var $table = $(this);
+									    $table.bind('repaginate', function() {
+									        $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+									    });
+									    $table.trigger('repaginate');
+									    var numRows = $table.find('tbody tr').length;
+									    var numPages = Math.ceil(numRows / numPerPage);
+									    var $pager = $('<div class="pager" id="paging"></div>');
+									    for (var page = 0; page < numPages; page++) {
+									        $('<span class="page-number"></span>').text(page + 1).bind('click', {
+									            newPage: page
+									        }, function(event) {
+									            currentPage = event.data['newPage'];
+									            $table.trigger('repaginate');
+									            $(this).addClass('active').siblings().removeClass('active');
+									        }).appendTo($pager).addClass('clickable');
+									    }
+									    $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+								});
+		                    }
+		                    else {
+			                    myApp.hidePreloader();
+			                    myApp.alert(res.message,'');
+		                    }
+		                  },
+		                  function (xhr, status) {
+		                    myApp.hideIndicator();
+		                    myApp.alert('Koneksi ke Server Bermasalah','');
+		                  }
+		          	);
+	        	}
+         	}
+
+         /* menu realisai */
+         function realisai(){
+         		$("#r_tahun").empty();
+         		$("#r_tahun").append('<option value='+tahun+' selected disabled>'+tahun+'</option>');
+         		for (var i=2018; i<=tahun; i++) {
+					var markup = "<option value="+i+">"+i+"</option>";
+				    $("#r_tahun").append(markup);
+				}
+         		myApp.popup('.popup-realisasi');
+         }
+         	/* sub menu realisasi */
+         	function realisasi_detail(kode){
+         		var tahun	= $$('#r_tahun').val();
+         		var token   = localStorage.getItem("token");
+         		//var kode 	= '0.00.2.12.01.01.00.000';
+         		myApp.showPreloader();
+         		$$.post(server+'data/realisasi_bulan'+'/'+token, {tahun:tahun, kode:kode}, 
+		        	function (data){
+		                var res = JSON.parse(data);
+		                if(res.code==1){
+		                    myApp.hidePreloader();
+		                    myApp.closeModal();
+		                    myApp.popup('.popup-realisasi-detail');
+		                    $('#r_nama_kegiatan').empty();
+		                    $('#r_kode').empty();
+		                    $('#r_thn').empty();
+		                     var kegiatan = res.data.kegiatan;
+		                     var kode 	  = res.data.kode;
+		                     var realisasi_bulan1 = res.data.bulan_1;
+		                     var realisasi_bulan2 = res.data.bulan_2;
+		                     var realisasi_bulan3 = res.data.bulan_3;
+		                     var realisasi_bulan4 = res.data.bulan_4;
+		                     var realisasi_bulan5 = res.data.bulan_5;
+		                     var realisasi_bulan6 = res.data.bulan_6;
+		                     var realisasi_bulan7 = res.data.bulan_7;
+		                     var realisasi_bulan8 = res.data.bulan_8;
+		                     var realisasi_bulan9 = res.data.bulan_9;
+		                     var realisasi_bulan10= res.data.bulan_10;
+		                     var realisasi_bulan11 = res.data.bulan_11;
+		                     var realisasi_bulan12 = res.data.bulan_12;
+		                     var tota_realisasi    = res.data.total;
+		                     document.getElementById("r_nama_kegiatan").innerHTML = kegiatan;
+		                     document.getElementById("r_kode").innerHTML 		  = kode;
+		                     document.getElementById("r_thn").innerHTML 		  = tahun;
+		                     document.getElementById("realisasi_bulan1").innerHTML= realisasi_bulan1;
+		                     document.getElementById("realisasi_bulan2").innerHTML= realisasi_bulan2;
+		                     document.getElementById("realisasi_bulan3").innerHTML= realisasi_bulan3;
+		                     document.getElementById("realisasi_bulan4").innerHTML= realisasi_bulan4;
+		                     document.getElementById("realisasi_bulan5").innerHTML= realisasi_bulan5;
+		                     document.getElementById("realisasi_bulan6").innerHTML= realisasi_bulan6;
+		                     document.getElementById("realisasi_bulan7").innerHTML= realisasi_bulan7;
+		                     document.getElementById("realisasi_bulan8").innerHTML= realisasi_bulan8;
+		                     document.getElementById("realisasi_bulan9").innerHTML= realisasi_bulan9;
+		                     document.getElementById("realisasi_bulan10").innerHTML= realisasi_bulan10;
+		                     document.getElementById("realisasi_bulan11").innerHTML= realisasi_bulan11;
+		                     document.getElementById("realisasi_bulan12").innerHTML= realisasi_bulan12;
+		                     document.getElementById("realisasi_bulan_total").innerHTML= tota_realisasi;
+		                }
+		                else {
+			                myApp.hidePreloader();
+			                myApp.alert(res.message,'');
+		                }
+		            },
+		            function (xhr, status) {
+		                myApp.hideIndicator();
+		                myApp.alert('Koneksi ke Server Bermasalah','');
+		            }
+		        );
+         	}
+         	/* all aksi button menu realisasi */
+         	function back_realisasi(){
+	   			var tahun    = document.getElementById('r_tahun');
+		        //tahun.value  ='';
+		        $('#hasil').hide();
+		        myApp.closeModal();
+	   		}
+	   		function back_realisasi_detail(){
+		        myApp.closeModal();
+		        myApp.popup('.popup-realisasi');
+	   		}
+	        function proses_realisasi(){
+	        	var tahun	= $$('#r_tahun').val();
+	        	var token   	= localStorage.getItem("token");
+	        	myApp.showPreloader();
+	        	if (tahun == '0') {
+	        		myApp.hidePreloader();
+	        		myApp.alert('tahun belum dipilih', '');
+	        	}
+	        	else {
+	        		$$.post(server+'data/realisasi'+'/'+token, {tahun:tahun}, 
+		                  function (data){
+		                    var res = JSON.parse(data);
+		                    if(res.code==1){
+		                     	myApp.hidePreloader();
+		                     	$('#hasil').show();
+		                     	$('#hasil').empty();
+				                $.each(res.data, function(key,val){  	
+									// var markup = "<li style='margin-left: 20px; margin-right:20px; padding-top:10px; padding-bottom: 10px; border-bottom: 1px solid #111;'><a href='#' onclick=realisasi_detail('"+val.kode+"');><table style='color: #000;'><tr><td width='225px'>"+val.kegiatan+"</td><td align='right'>"+val.realisasi+"</td></tr></table></a></li>";
+									var markup = "<a href='#' onclick=realisasi_detail('"+val.kode+"');><div class='row' style='padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #111; color: #000;'><div class='col-50'>"+val.kegiatan+"</div><div class='col-50' align='right'>"+val.realisasi+"</div></div></a>";
+				           			$("#hasil").append(markup);
+								});
+		                    }
+		                    else {
+			                    myApp.hidePreloader();
+			                    myApp.alert(res.message,'');
+		                    }
+		                  },
+		                  function (xhr, status) {
+		                    myApp.hideIndicator();
+		                    myApp.alert('Koneksi ke Server Bermasalah','');
+		                  }
+		          	);
+	        	}
+	        }
+      </script>
+   </body>
+</html>
